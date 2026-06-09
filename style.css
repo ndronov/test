@@ -1,0 +1,225 @@
+:root {
+    --page-width: min(74rem, calc(100vw - 2rem));
+    --title-size: clamp(2rem, 1.1rem + 1.8vw, 3.1rem);
+    --eyebrow-size: clamp(0.72rem, 0.66rem + 0.12vw, 0.85rem);
+    --text-size: clamp(0.72rem, 0.67rem + 0.09vw, 0.86rem);
+    --filter-size: clamp(0.72rem, 0.68rem + 0.1vw, 0.86rem);
+    --search-h: clamp(2.2rem, 2rem + 0.25vw, 2.6rem);
+    --gap: clamp(0.9rem, 0.5rem + 0.7vw, 1.25rem);
+    --card-gap: clamp(0.9rem, 0.65rem + 0.7vw, 1.25rem);
+    --card-pad: clamp(0.8rem, 0.55rem + 0.45vw, 1rem);
+    --radius: 0.28rem;
+    --shadow: 0 0.55rem 1.4rem rgba(31, 35, 41, 0.08);
+    --border: 1px solid #e5e8ed;
+    --text-color: #1e212c;
+    --background-color: #fff;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: "Lato", sans-serif;
+    color: var(--text-color);
+    background: var(--background-color);
+    min-height: 100vh;
+}
+
+.courses {
+    width: var(--page-width);
+    margin: 0 auto;
+    padding: clamp(1.2rem, 0.85rem + 0.9vw, 2rem) 0 clamp(2.5rem, 1.6rem + 2vw, 4rem);
+    position: relative;
+}
+
+.courses__header {
+    text-align: center;
+    margin-bottom: clamp(1.8rem, 1rem + 1.4vw, 3rem);
+}
+
+.courses__eyebrow {
+    margin: 0 0 0.45rem;
+    font-size: var(--eyebrow-size);
+    line-height: 1.2;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+}
+
+.courses__title {
+    margin: 0;
+    font-size: var(--title-size);
+    line-height: 1.05;
+    font-weight: 900;
+}
+
+.courses__toolbar {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(12rem, 14rem);
+    gap: var(--gap);
+    align-items: center;
+    margin-bottom: clamp(1.8rem, 1rem + 1.5vw, 2.8rem);
+}
+
+.courses__filters {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: clamp(0.45rem, 0.25rem + 0.45vw, 0.8rem);
+    min-width: 0;
+}
+
+.courses__filter {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.24rem;
+    min-height: clamp(1.9rem, 1.75rem + 0.25vw, 2.15rem);
+    padding: 0 clamp(0.7rem, 0.5rem + 0.35vw, 0.95rem);
+    border-radius: var(--radius);
+    text-decoration: none;
+    font-size: var(--filter-size);
+    font-weight: 700;
+    line-height: 1;
+    color: #9a9ca5;
+    white-space: nowrap;
+}
+
+.courses__filter sup {
+    position: relative;
+    top: -0.28em;
+    font-size: 0.65em;
+}
+
+.courses__filter--active {
+    border: 1px solid #ff3f3a;
+    color: #ff3f3a;
+}
+
+.courses__search {
+    position: relative;
+    width: 100%;
+}
+
+.courses__search-input {
+    width: 100%;
+    height: var(--search-h);
+    padding: 0 2.4rem 0 0.85rem;
+    border: 1px solid #e6e8ef;
+    border-radius: 0.18rem;
+    outline: none;
+    font: inherit;
+    font-size: var(--text-size);
+    color: var(--text-color);
+    background: var(--background-color);
+    box-shadow: 0 0.08rem 0.45rem rgba(31, 35, 41, 0.05);
+}
+
+.courses__search-input:disabled {
+    background: #e6e8ef;
+}
+
+.courses__search-input::placeholder {
+    color: #9a9ca5;
+}
+
+.courses__search-icon {
+    position: absolute;
+    right: 0.9rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1rem;
+    height: 1rem;
+    pointer-events: none;
+}
+
+.courses__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(19rem, 100%), 19rem));
+    gap: var(--card-gap);
+    justify-content: center;
+}
+
+.course-card {
+    background: var(--background-color);
+    border: var(--border);
+    border-radius: 0.25rem;
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    width: 100%;
+    max-width: 19rem;
+}
+
+.course-card--hidden {
+    display: none;
+}
+
+.course-card__image {
+    display: block;
+    width: 100%;
+    aspect-ratio: 1.22 / 1;
+    object-fit: cover;
+}
+
+.course-card__body {
+    padding: var(--card-pad);
+}
+
+.course-card__tag {
+    display: inline-flex;
+    align-items: center;
+    min-height: 1.05rem;
+    padding: 0.13rem 0.42rem;
+    border-radius: 0.12rem;
+    margin-bottom: clamp(0.5rem, 0.35rem + 0.35vw, 0.8rem);
+    color: #fff;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    font-weight: 400;
+}
+
+.course-card__tag--marketing { background: #03cea4; }
+.course-card__tag--management { background: #5a87fc; }
+.course-card__tag--hr { background: #f89828; }
+.course-card__tag--design { background: #f52f6e; }
+.course-card__tag--development { background: #7772f1; }
+
+.course-card__title {
+    margin: 0 0 clamp(0.68rem, 0.45rem + 0.35vw, 0.85rem);
+    font-size: clamp(0.92rem, 0.84rem + 0.18vw, 1.02rem);
+    line-height: 1.5;
+    font-weight: 700;
+    min-height: 2.6em;
+}
+
+.course-card__meta {
+    margin: 0;
+    font-size: clamp(0.72rem, 0.68rem + 0.08vw, 0.82rem);
+    line-height: 1.50;
+    font-weight: 700;
+    color: #787a80;
+}
+
+.course-card__price {
+    color: #ff4242;
+    font-weight: 700;
+}
+
+.courses__load-more {
+    margin: clamp(2rem, 1.4rem + 1.5vw, 3rem) auto 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.55rem;
+    border: 0;
+    background: transparent;
+    font-size: clamp(0.78rem, 0.72rem + 0.12vw, 0.9rem);
+    font-weight: 700;
+    color: #424551;
+    cursor: pointer;
+}
